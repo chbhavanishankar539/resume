@@ -95,7 +95,7 @@ const Skills = () => {
                         skill.category === 'tools' ? 'bg-purple-500' : 'bg-teal-500'
                       )}
                       style={{ 
-                        width: '0%',
+                        width: `${skill.level}%`,
                         animation: 'progress 1.5s ease-out forwards',
                         animationDelay: `${0.1 * index}s`
                       }}
@@ -105,20 +105,14 @@ const Skills = () => {
               ))}
             </div>
             
-            <style jsx>{`
-              @keyframes progress {
-                from { width: 0%; }
-                to { width: var(--level); }
-              }
-            `}</style>
-            
-            {skills.map((skill, index) => (
-              <style key={index} jsx>{`
-                div:nth-child(${index + 1}) > div:nth-child(2) > div {
-                  --level: ${skill.level}%;
+            <style>
+              {`
+                @keyframes progress {
+                  from { width: 0%; }
+                  to { width: 100%; }
                 }
-              `}</style>
-            ))}
+              `}
+            </style>
           </div>
           
           {/* Education Section */}
