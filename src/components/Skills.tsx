@@ -3,7 +3,8 @@ import React, { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { GraduationCap, BookOpen, ListCheck } from 'lucide-react';
+import { GraduationCap, BookOpen, ListCheck, ExternalLink } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface Skill {
   name: string;
@@ -230,9 +231,19 @@ const Skills = () => {
             </div>
             
             <div className="bg-slate-50 rounded-xl p-6 border border-slate-100 mt-10">
-              <h4 className="text-lg font-semibold text-primary mb-4">
-                Certifications
-              </h4>
+              <div className="flex items-center justify-between mb-4">
+                <h4 className="text-lg font-semibold text-primary">
+                  Certifications
+                </h4>
+                <a 
+                  href="https://drive.google.com/drive/folders/1F-A-BJEuS-yUP4b9XWvc8EEl6On07vsh?usp=drive_link" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"
+                >
+                  View all certificates <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
               <div className="space-y-3">
                 {certifications.map((cert, index) => (
                   <div key={index} className="flex items-start p-3 bg-white rounded-lg border border-slate-100">
@@ -244,6 +255,23 @@ const Skills = () => {
                     <span className="text-slate-700">{cert.name}</span>
                   </div>
                 ))}
+              </div>
+              <div className="mt-4 flex justify-center">
+                <Button 
+                  asChild
+                  variant="outline"
+                  className="group"
+                >
+                  <a 
+                    href="https://drive.google.com/drive/folders/1F-A-BJEuS-yUP4b9XWvc8EEl6On07vsh?usp=drive_link" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2"
+                  >
+                    <ExternalLink className="h-4 w-4 group-hover:text-primary" />
+                    View Certificate Drive
+                  </a>
+                </Button>
               </div>
             </div>
           </div>
