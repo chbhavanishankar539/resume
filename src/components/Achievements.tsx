@@ -23,11 +23,11 @@ const achievements: Achievement[] = [
     description: "Competed in coding challenges demonstrating problem-solving skills",
   },
   {
-    title: "Volunteering for KVR Events",
+    title: "Volunteering for SAC Events",
     description: "Contributed to the success of various campus events",
   },
   {
-    title: "Participated in KVR Hackathon",
+    title: "Participated in RVR Hackathon",
     description: "Collaborated in a team to develop innovative solutions under time constraints",
   },
 ];
@@ -35,7 +35,7 @@ const achievements: Achievement[] = [
 const links: Link[] = [
   {
     name: "LinkedIn",
-    url: "https://www.linkedin.com/in/chidella-bhavani-shankar-b76979ac/",
+    url: "https://www.linkedin.com/in/bhavani-shankar-chidella-9636a7356/",
   },
   {
     name: "HackerRank",
