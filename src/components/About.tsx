@@ -30,7 +30,7 @@ const About = () => {
         <div className="max-w-4xl mx-auto">
           <div className="space-y-3 text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-display font-bold text-primary reveal-item">
-              About Me
+              Summary
             </h2>
             <div className="w-20 h-1 bg-primary/20 mx-auto reveal-item"></div>
           </div>
@@ -40,7 +40,7 @@ const About = () => {
               <div className="absolute -inset-4 -z-10 rounded-2xl bg-gradient-to-r from-slate-100 to-white blur-xl opacity-70"></div>
               <div className="glass rounded-2xl shadow-elevation overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                   alt="Computer coding"
                   className="w-full h-full object-cover image-loading"
                   loading="lazy"
@@ -51,23 +51,23 @@ const About = () => {
             
             <div className="space-y-6 reveal-item" style={{ transitionDelay: '0.4s' }}>
               <p className="text-lg text-slate-700 leading-relaxed">
-                I'm a third-year Computer Science student at Stanford University with a passion for software engineering, artificial intelligence, and user experience design.
+                A driven BTech student, boasting an impressive GPA of 8.5, waiting for a great platform for the application of my knowledge and skills.
               </p>
               
               <p className="text-lg text-slate-700 leading-relaxed">
-                My journey in technology began when I built my first website at the age of 14. Since then, I've expanded my skills to include mobile development, machine learning, and full-stack web applications.
+                Passionate about leveraging academic excellence to contribute effectively to innovative projects and initiatives, I am committed to continuous learning and growth in new technologies.
               </p>
               
               <p className="text-lg text-slate-700 leading-relaxed">
-                When I'm not coding, you can find me playing basketball, reading science fiction, or exploring new hiking trails.
+                With a strong foundation in computer science and a keen interest in software development, I'm eager to apply my skills to real-world challenges.
               </p>
               
               <div className="pt-4">
                 <h3 className="text-lg font-semibold text-primary mb-3">
-                  Current Focus
+                  Technical Focus
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {['React', 'TypeScript', 'Machine Learning', 'UI/UX Design'].map((item, index) => (
+                  {['Python', 'Java', 'JavaScript', 'React', 'SQL', 'MongoDB'].map((item, index) => (
                     <span 
                       key={index} 
                       className="px-3 py-1 text-sm bg-slate-100 text-slate-700 rounded-full"
