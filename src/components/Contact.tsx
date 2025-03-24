@@ -2,6 +2,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { toast } from "@/components/ui/use-toast";
+import { Mail } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -51,6 +53,10 @@ const Contact = () => {
     }, 1500);
   };
 
+  const handleMailButtonClick = () => {
+    window.location.href = "mailto:alex.chen@example.com";
+  };
+
   return (
     <section id="contact" className="section-padding bg-slate-50" ref={sectionRef}>
       <div className="container mx-auto px-6 md:px-10">
@@ -73,15 +79,27 @@ const Contact = () => {
                 <div className="space-y-4">
                   <div className="flex items-start">
                     <div className="h-10 w-10 rounded-full bg-slate-100 flex items-center justify-center text-primary flex-shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
+                      <Mail className="h-5 w-5" />
                     </div>
                     <div className="ml-4">
                       <h4 className="text-sm font-medium text-slate-500">Email</h4>
-                      <a href="mailto:alex.chen@example.com" className="text-primary hover:text-primary/80 transition-colors">
+                      <a 
+                        href="mailto:alex.chen@example.com" 
+                        className="text-primary hover:text-primary/80 transition-colors"
+                      >
                         alex.chen@example.com
                       </a>
+                      <div className="mt-2">
+                        <Button 
+                          onClick={handleMailButtonClick}
+                          variant="outline" 
+                          size="sm" 
+                          className="group"
+                        >
+                          <Mail className="h-4 w-4 mr-2 group-hover:text-primary" />
+                          Contact me
+                        </Button>
+                      </div>
                     </div>
                   </div>
                   
