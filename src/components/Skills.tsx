@@ -1,10 +1,12 @@
 
 import React, { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { GraduationCap, BookOpen, ListCheck } from 'lucide-react';
 
 interface Skill {
   name: string;
-  level: number;
   category: 'programming' | 'tools' | 'design' | 'soft';
 }
 
@@ -24,24 +26,24 @@ interface Language {
 }
 
 const technicalSkills: Skill[] = [
-  { name: 'Python', level: 90, category: 'programming' },
-  { name: 'JavaScript', level: 85, category: 'programming' },
-  { name: 'Java', level: 80, category: 'programming' },
-  { name: 'React', level: 85, category: 'programming' },
-  { name: 'SQL', level: 80, category: 'programming' },
-  { name: 'MongoDB', level: 75, category: 'tools' },
-  { name: 'CSS', level: 85, category: 'design' },
-  { name: 'OpenCV', level: 70, category: 'tools' },
-  { name: 'Flask', level: 85, category: 'programming' },
-  { name: 'HTML', level: 90, category: 'programming' },
+  { name: 'Python', category: 'programming' },
+  { name: 'JavaScript', category: 'programming' },
+  { name: 'Java', category: 'programming' },
+  { name: 'React', category: 'programming' },
+  { name: 'SQL', category: 'programming' },
+  { name: 'MongoDB', category: 'tools' },
+  { name: 'CSS', category: 'design' },
+  { name: 'OpenCV', category: 'tools' },
+  { name: 'Flask', category: 'programming' },
+  { name: 'HTML', category: 'programming' },
 ];
 
 const softSkills: Skill[] = [
-  { name: 'Organizational and time-management skills', level: 90, category: 'soft' },
-  { name: 'Exceptional communication and interpersonal skills', level: 85, category: 'soft' },
-  { name: 'Ability to work independently and as part of a team', level: 90, category: 'soft' },
-  { name: 'Detail-oriented and able to handle multiple tasks simultaneously', level: 80, category: 'soft' },
-  { name: 'High tolerance of stress and enjoys responsibilities', level: 85, category: 'soft' },
+  { name: 'Organizational and time-management skills', category: 'soft' },
+  { name: 'Exceptional communication and interpersonal skills', category: 'soft' },
+  { name: 'Ability to work independently and as part of a team', category: 'soft' },
+  { name: 'Detail-oriented and able to handle multiple tasks simultaneously', category: 'soft' },
+  { name: 'High tolerance of stress and enjoys responsibilities', category: 'soft' },
 ];
 
 const education: Education[] = [
@@ -114,111 +116,135 @@ const Skills = () => {
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Technical Skills Section */}
+          {/* Technical Skills Section - Improved UI */}
           <div className="space-y-8 reveal-item">
-            <h3 className="text-2xl font-bold text-primary">Technical Skills</h3>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                <ListCheck className="h-5 w-5" />
+              </div>
+              <h3 className="text-2xl font-bold text-primary">Technical Skills</h3>
+            </div>
             
-            <div className="space-y-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {technicalSkills.map((skill, index) => (
-                <div key={index} className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-700 font-medium">{skill.name}</span>
-                    <span className="text-sm text-slate-500">{skill.level}%</span>
-                  </div>
-                  <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-                    <div 
-                      className={cn(
-                        "h-full rounded-full transition-all duration-1000 ease-out",
-                        skill.category === 'programming' ? 'bg-blue-500' :
-                        skill.category === 'tools' ? 'bg-purple-500' : 'bg-teal-500'
-                      )}
-                      style={{ 
-                        width: `${skill.level}%`,
-                        animation: 'progress 1.5s ease-out forwards',
-                        animationDelay: `${0.1 * index}s`
-                      }}
-                    />
-                  </div>
+                <div 
+                  key={index}
+                  className={cn(
+                    "p-3 rounded-lg text-center transition-all duration-300 hover:scale-105 hover:shadow-elevation",
+                    skill.category === 'programming' ? 'bg-blue-50 text-blue-700' :
+                    skill.category === 'tools' ? 'bg-purple-50 text-purple-700' : 
+                    'bg-teal-50 text-teal-700'
+                  )}
+                >
+                  <span className="font-medium">{skill.name}</span>
                 </div>
               ))}
             </div>
             
-            <style>
-              {`
-                @keyframes progress {
-                  from { width: 0%; }
-                  to { width: 100%; }
-                }
-              `}
-            </style>
-
             {/* Soft Skills Section */}
-            <h3 className="text-2xl font-bold text-primary mt-10">Soft Skills</h3>
-            <ul className="list-disc pl-5 space-y-2 text-slate-700">
-              {softSkills.map((skill, index) => (
-                <li key={index}>{skill.name}</li>
-              ))}
-            </ul>
+            <div className="mt-12">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-10 w-10 rounded-full bg-teal-100 flex items-center justify-center text-teal-600">
+                  <BookOpen className="h-5 w-5" />
+                </div>
+                <h3 className="text-2xl font-bold text-primary">Soft Skills</h3>
+              </div>
+              
+              <Card className="border-0 shadow-subtle">
+                <CardContent className="p-6">
+                  <ul className="space-y-3">
+                    {softSkills.map((skill, index) => (
+                      <li key={index} className="flex items-start">
+                        <div className="h-5 w-5 mt-0.5 text-primary mr-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <span className="text-slate-700">{skill.name}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
 
             {/* Languages Section */}
-            <h3 className="text-2xl font-bold text-primary mt-10">Languages Known</h3>
-            <div className="flex flex-wrap gap-3">
-              {languages.map((language, index) => (
-                <span 
-                  key={index} 
-                  className="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg font-medium"
-                >
-                  {language.name}
-                </span>
-              ))}
+            <div className="mt-12">
+              <div className="flex items-center gap-3 mb-6">
+                <h3 className="text-2xl font-bold text-primary">Languages Known</h3>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {languages.map((language, index) => (
+                  <Badge 
+                    key={index} 
+                    variant="outline"
+                    className="px-4 py-3 text-base font-medium border-2 border-slate-200"
+                  >
+                    {language.name}
+                  </Badge>
+                ))}
+              </div>
             </div>
           </div>
           
-          {/* Education Section */}
+          {/* Education Section - Improved UI */}
           <div className="space-y-8 reveal-item" style={{ animationDelay: '0.2s' }}>
-            <h3 className="text-2xl font-bold text-primary">Education</h3>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                <GraduationCap className="h-5 w-5" />
+              </div>
+              <h3 className="text-2xl font-bold text-primary">Education</h3>
+            </div>
             
-            <div className="space-y-8">
+            <div className="space-y-6">
               {education.map((edu, index) => (
-                <div 
+                <Card 
                   key={index} 
-                  className="relative pl-8 border-l-2 border-slate-200 pb-8 last:pb-0"
+                  className={cn(
+                    "overflow-hidden transition-all duration-300 hover:shadow-elevation hover:-translate-y-1",
+                    index === 0 ? "border-l-4 border-l-blue-500" :
+                    index === 1 ? "border-l-4 border-l-purple-500" :
+                    "border-l-4 border-l-teal-500"
+                  )}
                 >
-                  <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary" />
-                  
-                  <div className="space-y-2">
-                    <h4 className="text-xl font-semibold text-primary">
-                      {edu.degree}
-                    </h4>
-                    <div className="flex flex-wrap items-center text-slate-700">
-                      <span className="font-medium">{edu.institution}</span>
-                      <span className="mx-2 text-slate-400">•</span>
-                      <span className="text-slate-500">{edu.period}</span>
+                  <CardContent className="p-6">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <h4 className="text-xl font-semibold text-primary">
+                          {edu.degree}
+                        </h4>
+                        <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-sm">
+                          {edu.period}
+                        </span>
+                      </div>
+                      <div className="text-slate-700 font-medium">
+                        {edu.institution}
+                      </div>
+                      <p className="text-slate-600">
+                        {edu.description}
+                      </p>
                     </div>
-                    <p className="text-slate-600">
-                      {edu.description}
-                    </p>
-                  </div>
-                </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
             
             <div className="bg-slate-50 rounded-xl p-6 border border-slate-100 mt-10">
-              <h4 className="text-lg font-semibold text-primary mb-3">
+              <h4 className="text-lg font-semibold text-primary mb-4">
                 Certifications
               </h4>
-              <ul className="space-y-2">
+              <div className="space-y-3">
                 {certifications.map((cert, index) => (
-                  <li key={index} className="flex items-start">
-                    <div className="h-5 w-5 flex-shrink-0 text-blue-500 mr-2">
+                  <div key={index} className="flex items-start p-3 bg-white rounded-lg border border-slate-100">
+                    <div className="h-5 w-5 flex-shrink-0 text-blue-500 mr-3 mt-0.5">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
                     </div>
                     <span className="text-slate-700">{cert.name}</span>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
         </div>
