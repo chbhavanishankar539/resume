@@ -1,9 +1,10 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { toast } from "@/components/ui/use-toast";
 import { Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from '@/config/emailjs';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -38,19 +39,36 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        EMAILJS_CONFIG.PUBLIC_KEY
+      );
+      
       toast({
         title: "Message sent!",
         description: "Thanks for reaching out. I'll get back to you soon.",
       });
       setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   const handleMailButtonClick = () => {
