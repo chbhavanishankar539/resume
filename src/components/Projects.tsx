@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -43,6 +42,33 @@ const projects: Project[] = [
       "User Experience: Enhanced user interaction by providing additional movie details (rating and director) in the recommendation results"
     ],
     image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: 3,
+    title: "FealtyX Bug Tracker",
+    description: "A modern bug and task tracking application with real-time updates, role-based access, and a beautiful dashboard.",
+    technologies: [
+      "Next.js 14",
+      "TypeScript",
+      "Tailwind CSS",
+      "Prisma (PostgreSQL)",
+      "NextAuth.js",
+      "Zustand",
+      "Recharts",
+      "Headless UI"
+    ],
+    details: [
+      "User authentication with role-based access control (Developer and Manager roles)",
+      "Task/Bug management with status tracking and priority levels",
+      "Time tracking for tasks with start/stop and duration calculation",
+      "Dashboard with task statistics, trends, and recent activity",
+      "Responsive design for desktop and mobile",
+      "Real-time updates for collaborative work",
+      "Secure session management with NextAuth.js",
+      "Data visualization with Recharts"
+    ],
+    image: "https://raw.githubusercontent.com/chbhavanishankar539/Bug/master/public/og-image.png",
+    link: "https://bug-wheat.vercel.app/login"
   }
 ];
 
